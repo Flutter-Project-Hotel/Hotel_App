@@ -1,19 +1,27 @@
 name: hotel_project
 description: A new Flutter project.
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: '>=3.1.0 <4.0.0'
+  sdk: ">=3.1.0 <4.0.0"
 
 dependencies:
+<<<<<<< HEAD
+  convex_bottom_bar: ^3.2.0
+=======
+  cached_network_image: ^3.2.3
+>>>>>>> noura
   flutter:
     sdk: flutter
+  supabase: ^1.11.1
+  supabase_flutter: ^1.10.14
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  
 
 flutter:
   uses-material-design: true
