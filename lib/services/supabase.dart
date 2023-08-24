@@ -1,3 +1,4 @@
+import 'package:hotel_project/models/hotel.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SupabaseService {
@@ -21,7 +22,7 @@ class SupabaseService {
 //     await supabase.from('course').insert(course.toJson());
 //   }
 
-//   ///////////////////delete function to Course table
+// //   ///////////////////delete function to Course table
 
 //   Future deleteCourse(String courseId) async {
 //     final supabase = Supabase.instance.client;
