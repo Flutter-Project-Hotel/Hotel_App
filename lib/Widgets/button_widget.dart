@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:hotel_project/constants/colors.dart';
 
 class ButtonsWidget extends StatelessWidget {
   const ButtonsWidget({
     super.key,
     this.text = '',
-    this.bgColor = const Color(0xff5d8d80),
+    this.bgColor = HColors.blue,
     this.onPressed,
   });
   final String text;

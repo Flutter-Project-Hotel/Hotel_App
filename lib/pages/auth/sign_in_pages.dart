@@ -1,86 +1,119 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:hotel_project/Widgets/Image_widget.dart';
 import 'package:hotel_project/Widgets/button_widget.dart';
-import 'package:hotel_project/Widgets/password_text_field_widget.dart';
-import 'package:hotel_project/Widgets/text_field_widget.dart';
 import 'package:hotel_project/Widgets/text_widget.dart';
 import 'package:hotel_project/constants/spacings.dart';
 import 'package:hotel_project/utils/extensions.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-class SignInePage extends StatelessWidget {
-  const SignInePage({super.key});
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
+
+  @override
+  State<SignUpPage> createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final supabase = Supabase.instance.client;
+    log('Token: ${supabase.auth.currentSession?.accessToken}');
     return Scaffold(
-      body: SafeArea(
+        body: SafeArea(
+      child: SingleChildScrollView(
         child: Column(
           children: [
+            // Container(
+            //   child: ImagePage(
+            //       imagePage:
+            //           'https://lcotzphrhnuetkcblvln.supabase.co/storage/v1/object/public/images/%20welcome.png'),
+            // ),
             Container(
-              child: Expanded(
-                child: ImageWidget(
-                  image:
-                      'https://upload.wikimedia.org/wikipedia/commons/b/b5/IMG-20190601-WA0004.jpg',
-                  imageHeight: context.width,
-                ),
+              width: context.width,
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(8), topRight: Radius.circular(8)),
               ),
-            ),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Container(
-                  width: context.width,
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(8),
-                        topRight: Radius.circular(8)),
-                  ),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 15, horizontal: 10),
-                        child: Column(children: [
-                          const TextWidget(
-                              text: "Create New Account",
-                              size: 25,
-                              istextBold: true,
-                              isColorOpacity: true),
-                          hVSpace16,
-                          TextFormFieldWidget(
-                            textHint: 'Name',
-                            iconTextFiel: Icons.person_2_outlined,
-                          ),
-                          TextFormFieldWidget(
-                            textHint: 'Enter Email Address',
-                            iconTextFiel: Icons.email_outlined,
-                            inputType: TextInputType.emailAddress,
-                          ),
-                          hVSpace8,
-                          const PasswordWidget(
-                              textHint: 'Enter Password',
-                              inputType: TextInputType.visiblePassword,
-                              iconTextFiel: Icons.lock_outline)
-                        ]),
-                      ),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 15, horizontal: 10),
+                    child: Column(children: [
+                      const TextWidget(
+                          text: "Create New Account",
+                          size: 25,
+                          istextBold: true,
+                          isColorOpacity: true),
                       hVSpace16,
-                      Column(
-                        children: [
-                          ButtonsWidget(
-                            text: "Sign up",
-                            onPressed: () {
-                              // const SignInScreen().push(context);
-                            },
-                          ),
-                        ],
+                      TextField(
+                        controller: nameController,
+                        decoration: const InputDecoration(
+                            labelText: 'Name', border: OutlineInputBorder()),
+                      ),
+                      hVSpace8,
+                      TextField(
+                        controller: emailController,
+                        decoration: const InputDecoration(
+                            labelText: 'Email', border: OutlineInputBorder()),
+                      ),
+                      // TextFormFieldWidget(
+                      //   textHint: 'Enter Email Address',
+                      //   iconTextFiel: Icons.email_outlined,
+                      //   inputType: TextInputType.emailAddress,
+                      // ),
+                      hVSpace8,
+                      TextField(
+                        controller: passwordController,
+                        decoration: const InputDecoration(
+                            labelText: 'Password',
+                            border: OutlineInputBorder()),
+                        obscureText: true,
+                      ),
+                    ]),
+                  ),
+                  hVSpace16,
+                  Column(
+                    children: [
+                      ButtonsWidget(
+                        text: "SignUp ",
+                        onPressed: () async {
+                          if ((emailController.text.isNotEmpty &&
+                                  emailController.text.isValidEmail) &&
+                              passwordController.text.isNotEmpty) {
+                            // Signing in ...
+                            await supabase.auth.signUp(
+                              email: emailController.text,
+                              password: passwordController.text,
+                            );
+                            if (context.mounted) {
+                              context.pop;
+                            }
+                          }
+                        },
                       ),
                     ],
                   ),
-                ),
+                ],
               ),
             ),
           ],
         ),
       ),
-    );
+    ));
   }
 }

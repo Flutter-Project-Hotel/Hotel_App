@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:hotel_project/constants/colors.dart';
 
 class TextWidget extends StatelessWidget {
   const TextWidget(
@@ -22,9 +22,7 @@ class TextWidget extends StatelessWidget {
       style: TextStyle(
           fontWeight: istextBold != true ? FontWeight.normal : FontWeight.bold,
           fontSize: size,
-          color: isColorOpacity != true
-              ? Colors.black.withOpacity(0.6)
-              : const Color(0xff5d8d80)),
+          color: isColorOpacity != true ? HColors.lightBlue : HColors.blue),
       textAlign: textAlign,
     );
   }
