@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:hotel_project/Widgets/custm_bottom_appBar.dart';
-import 'package:hotel_project/Widgets/text_widget.dart';
+import 'package:hotel_project/Widgets/app_bar.dart';
+import 'package:hotel_project/Widgets/home_widget.dart';
+import 'package:hotel_project/pages/notification_page.dart';
+import 'package:hotel_project/pages/orders_page.dart';
+import 'package:hotel_project/pages/profile_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,16 +13,69 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int index = 0;
+  List pages = [
+    const HomeWidget(),
+    const OrdersPage(),
+    const NotificationPage(),
+    const ProfilePage(),
+  ];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
         body: SafeArea(
-            child: Column(children: [
-      Container(
-        child: TextWidget(
-            text: "Welcome ", size: 30, istextBold: true, isColorOpacity: true),
+            child: Column(children: [ 
+              TAppBar(title: 'home Page'),
+
+      bottomNavigationBar: ConvexAppBar(
+        items:  [
+          TabItem(
+              icon: Icon(
+                Icons.home,
+                color: HColors.blue,
+              ),
+              title: 'Home'),
+          TabItem(
+            icon: Icon(
+              Icons.list_alt,
+              color: HColors.blue,
+            ),
+            title: 'Orders',
+          ),
+          TabItem(
+              icon: Icon(
+                Icons.notifications_none_outlined,
+                color: HColors.blue,
+              ),
+              title: 'Notification'),
+          TabItem(
+              icon: Icon(
+                // ProfilePage
+                Icons.person_2,
+                color: HColors.blue,
+              ),
+              title: 'Profile'),
+        ],
+        initialActiveIndex: index,
+        onTap: _changeItem,
+        backgroundColor: HColors.lightBlue,
       ),
-      custom_bottom_appBar(),
-    ])));
+      body: pages.elementAt(index),]
+    
+    ))
+    );
+  }
+  
+
+  _changeItem(int value) {
+    setState(() {
+      index = value;
+    });
+    
+    
+    
+    
+    
+  
   }
 }

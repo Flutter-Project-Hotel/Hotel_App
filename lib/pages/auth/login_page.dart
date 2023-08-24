@@ -1,12 +1,10 @@
 import 'dart:developer';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:hotel_project/Widgets/Image_widget.dart';
 import 'package:hotel_project/Widgets/button_widget.dart';
 import 'package:hotel_project/Widgets/text_widget.dart';
 import 'package:hotel_project/app.dart';
 import 'package:hotel_project/constants/spacings.dart';
-import 'package:hotel_project/models/hotel.dart';
 import 'package:hotel_project/pages/auth/sign_up_page.dart';
 import 'package:hotel_project/utils/extensions.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
