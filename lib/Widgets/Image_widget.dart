@@ -1,24 +1,18 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 class ImageWidget extends StatelessWidget {
-  const ImageWidget(
-      {super.key,
-      this.image = '',
-      this.imageWidth,
-      this.imageHeight,
-      this.isCover = false});
-  final String image;
-  final double? imageWidth;
-  final double? imageHeight;
-  final bool? isCover;
+  const ImageWidget({
+    super.key,
+    this.imageWidget = '',
+  });
+  final String imageWidget;
 
   @override
   Widget build(BuildContext context) {
-    return Image.network(
-      image,
-      width: imageWidth,
-      height: imageHeight,
-      fit: isCover != true ? BoxFit.cover : BoxFit.contain,
+    return Image.asset(
+      imageWidget,
+      width: MediaQuery.of(context).size.width,
+      fit: BoxFit.contain,
     );
   }
 }

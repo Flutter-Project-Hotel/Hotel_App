@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:hotel_project/constants/colors.dart';
 
 class ButtonsWidget extends StatelessWidget {
   const ButtonsWidget({
     super.key,
     this.text = '',
-    this.bgColor = const Color(0xff5d8d80),
+    this.bgColor = HColors.lightBlue,
     this.onPressed,
   });
   final String text;
@@ -18,7 +19,7 @@ class ButtonsWidget extends StatelessWidget {
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(bgColor),
         padding: MaterialStateProperty.all(
-            const EdgeInsets.symmetric(horizontal: 115, vertical: 20)),
+            const EdgeInsets.symmetric(horizontal: 250, vertical: 20)),
       ),
       child: Text(
         text,

@@ -1,7 +1,5 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:hotel_project/Widgets/Image_widget.dart';
 import 'package:hotel_project/Widgets/button_widget.dart';
 import 'package:hotel_project/Widgets/text_widget.dart';
 import 'package:hotel_project/constants/spacings.dart';
@@ -35,15 +33,6 @@ class _SignUpPageState extends State<SignUpPage> {
       body: SafeArea(
         child: Column(
           children: [
-            Container(
-              child: Expanded(
-                child: ImageWidget(
-                  image:
-                      'https://lcotzphrhnuetkcblvln.supabase.co/storage/v1/object/public/images/%20welcome.png',
-                  imageHeight: context.width,
-                ),
-              ),
-            ),
             Expanded(
               child: SingleChildScrollView(
                 child: Container(

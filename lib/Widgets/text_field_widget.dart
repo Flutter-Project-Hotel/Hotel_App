@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hotel_project/constants/colors.dart';
 
 class TextFormFieldWidget extends StatefulWidget {
   const TextFormFieldWidget({
@@ -22,16 +23,15 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      // controller: controller,
       decoration: InputDecoration(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15.0),
         ),
         hintText: widget.textHint,
-        fillColor: Colors.grey[300],
+        fillColor: HColors.grey,
         prefixIcon: Icon(
           widget.iconTextFiel,
-          color: const Color(0xff5d8d80).withOpacity(0.9),
+          color: HColors.blue.withOpacity(0.9),
         ),
       ),
     );

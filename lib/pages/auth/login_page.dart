@@ -1,6 +1,5 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:hotel_project/Widgets/Image_widget.dart';
 import 'package:hotel_project/Widgets/button_widget.dart';
 import 'package:hotel_project/Widgets/text_widget.dart';
 import 'package:hotel_project/app.dart';
@@ -34,26 +33,6 @@ class _LoginPageState extends State<LoginPage> {
       body: SafeArea(
         child: Column(
           children: [
-            Container(
-              child: Expanded(
-                flex: 1,
-                child:
-                    // CachedNetworkImage(
-                    //   imageUrl: hotel.imageUrl ??
-                    //       'https://lcotzphrhnuetkcblvln.supabase.co/storage/v1/object/public/images/%20welcome.png',
-                    //   errorWidget: (context, url, s) {
-                    //     return Container(color: Colors.red);
-                    //   },
-                    //   width: 300,
-                    //   fit: BoxFit.cover,
-                    // ),
-                    ImageWidget(
-                  image:
-                      'https://lcotzphrhnuetkcblvln.supabase.co/storage/v1/object/public/images/%20welcome.png',
-                  imageHeight: context.width,
-                ),
-              ),
-            ),
             Expanded(
               child: Container(
                   width: context.width,
@@ -75,11 +54,7 @@ class _LoginPageState extends State<LoginPage> {
                               istextBold: true,
                               isColorOpacity: true),
                           hVSpace16,
-                          // TextFormFieldWidget(
-                          //   textHint: 'Enter Email Address',
-                          //   iconTextFiel: Icons.email_outlined,
-                          //   inputType: TextInputType.emailAddress,
-                          // ),
+
                           TextField(
                             controller: emailController,
                             decoration: const InputDecoration(
