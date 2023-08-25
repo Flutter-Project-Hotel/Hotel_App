@@ -1,11 +1,10 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:hotel_project/pages/auth/Login_page.dart';
-// import 'package:hotel_project/pages/auth/welcome_page.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:hotel_project/services/supabase.dart';
 import 'package:hotel_project/pages/home_page.dart';
-// import 'package:hotel_project/pages/auth/welcome_page.dart';
+// import 'package:hotel_project/pages/auth/login_page.dart';
 
 class App extends StatefulWidget {
   const App({super.key});

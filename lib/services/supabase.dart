@@ -1,15 +1,33 @@
+import 'dart:math';
+import 'dart:developer';
+import 'package:hotel_project/models/booking.dart';
 import 'package:hotel_project/models/hotel.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SupabaseService {
   static final client = Supabase.instance.client;
 
+// for booking table
+  Future<List<Booking>?> getBooking() async {
+    final supabase = Supabase.instance.client;
+    final rawBooking = await supabase.from('booking').select();
+    print('rawBooking: ${rawBooking}');
+
+    final List<Booking> bookingList = [];
+    print('bookingList: ${bookingList}');
+
+    for (final booking in rawBooking) {
+      bookingList.add(Booking.fromJson(booking));
+    }
+    print(bookingList);
+    return bookingList;
+  }
+
 // for Hotel table
-// for Course table    ,hotelPrice, description, capacityRoom, facititiesType,city , imageCity');
+
   Future<List<Hotel>?> getHotel() async {
     final supabase = Supabase.instance.client;
-    final rawHotels =
-        await supabase.from('hotel').select('hotelId, hotelName, imageUrl');
+    final rawHotels = await supabase.from('hotel').select();
     final List<Hotel> hotels = [];
     for (final hotel in rawHotels) {
       hotels.add(Hotel.fromJson(hotel));
@@ -18,12 +36,12 @@ class SupabaseService {
   }
 
 ///////////////////insert function to Course table (update function like this)
-  Future insertCourse(Hotel hotel) async {
-    final supabase = Supabase.instance.client;
-    await supabase.from('hotel').insert(hotel.toJson());
-  }
+  // Future insertCourse(Hotel hotel) async {
+  //   final supabase = Supabase.instance.client;
+  //   await supabase.from('hotel').insert(hotel.toJson());
+  // }
 
-//   ///////////////////delete function to Course table
+//   ///////////////////delete function to hotel table
 
   Future deleteHotel(String hotelId) async {
     final supabase = Supabase.instance.client;
@@ -42,7 +60,7 @@ class SupabaseService {
   //   return courses;
   // }
 
-  Future<List<Hotel>?> getStudentsByHotelId(String hotelId) async {
+  Future<List<Hotel>?> getHotelsByHotelId(String hotelId) async {
     final supabase = Supabase.instance.client;
     final rawHotels = await supabase.from('hotel').select(
         'hotelId, hotelName, imageUrl,hotelPrice, description, capacityRoom, facititiesType,city , imageCity');
