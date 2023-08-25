@@ -27,11 +27,11 @@ class SupabaseService {
     return hotels;
   }
 
-///////////////////insert function to Course table (update function like this)
-  // Future insertCourse(Hotel hotel) async {
-  //   final supabase = Supabase.instance.client;
-  //   await supabase.from('hotel').insert(hotel.toJson());
-  // }
+///////////////////insert function to Hotel table (update function like this)
+  Future insertCourse(Hotel hotel) async {
+    final supabase = Supabase.instance.client;
+    await supabase.from('hotel').insert(hotel.toJson());
+  }
 
 //   ///////////////////delete function to hotel table
 

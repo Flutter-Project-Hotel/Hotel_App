@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:hotel_project/constants/spacings.dart';
 import 'package:hotel_project/models/hotel.dart';
-import 'package:hotel_project/pages/hotel_screen.dart';
+import 'package:hotel_project/pages/hotel_details.dart';
 import 'package:hotel_project/utils/extensions.dart';
 
 class HotelCard extends StatelessWidget {
@@ -17,7 +17,7 @@ class HotelCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        HotelScreen(hotel: hotel).push(context);
+        HotelDetails(hotel: hotel).push(context);
       },
       child: Material(
         borderRadius: BorderRadius.circular(15),
@@ -68,7 +68,7 @@ class HotelCard extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      "\$ ${hotel.hotelPrice.toString()} /night" ?? '0',
+                      "\$ ${hotel.hotelPrice.toString()} /night",
                       style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 15,

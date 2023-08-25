@@ -19,7 +19,9 @@ class _HomePageState extends State<HomePage> {
   int index = 0;
   List pages = [
     const HomeWidget(),
-    const OrdersPage(),
+    const OrdersPage(
+      hotel: null,
+    ),
     const NotificationPage(),
     const ProfilePage(),
   ];
