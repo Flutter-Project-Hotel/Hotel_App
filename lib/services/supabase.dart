@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'dart:developer';
+
 import 'package:hotel_project/models/booking.dart';
 import 'package:hotel_project/models/hotel.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -10,21 +11,17 @@ class SupabaseService {
 // for booking table
   Future<List<Booking>?> getBooking() async {
     final supabase = Supabase.instance.client;
-    final rawBooking = await supabase.from('booking').select();
-    print('rawBooking: ${rawBooking}');
-
+    final rawBooking = await supabase
+        .from('booking')
+        .select('bookingId, logo, imageWelcome,userId, hotelId');
     final List<Booking> bookingList = [];
-    print('bookingList: ${bookingList}');
-
     for (final booking in rawBooking) {
       bookingList.add(Booking.fromJson(booking));
     }
-    print(bookingList);
     return bookingList;
   }
 
 // for Hotel table
-
   Future<List<Hotel>?> getHotel() async {
     final supabase = Supabase.instance.client;
     final rawHotels = await supabase.from('hotel').select();

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_project/Widgets/app_bar.dart';
+import 'package:hotel_project/Widgets/popular_cities_widget.dart';
 
 import 'package:hotel_project/component/card_hotel.dart';
 import 'package:hotel_project/constants/spacings.dart';
+import 'package:hotel_project/models/hotel.dart';
 import 'package:hotel_project/services/supabase.dart';
 import 'package:hotel_project/utils/extensions.dart';
 
@@ -21,11 +23,12 @@ class _HomeWidgetState extends State<HomeWidget> {
     return Scaffold(
       body: SizedBox(
         width: context.width,
+        height: context.height,
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
             const TAppBar(title: 'home Page'),
-            hVSpace24,
+            hVSpace16,
             FutureBuilder(
               future: SupabaseService().getHotel(),
               builder: (context, snapshot) {
