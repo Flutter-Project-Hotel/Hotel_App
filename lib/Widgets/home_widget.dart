@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hotel_project/Widgets/app_bar.dart';
 
 class HomeWidget extends StatefulWidget {
   const HomeWidget({
@@ -12,15 +13,20 @@ class HomeWidget extends StatefulWidget {
 class _HomeWidgetState extends State<HomeWidget> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.only(top: 120, right: 15, left: 15),
-        child: Column(children: [
-          Text(
-            "Welcome",
-          )
-        ]),
-      ),
+    return Column(
+      children: [
+        TAppBar(title: "Hi noura"),
+        const Center(
+          child: Padding(
+            padding: EdgeInsets.only(top: 120, right: 15, left: 15),
+            child: Column(children: [
+              Text(
+                "Welcome",
+              )
+            ]),
+          ),
+        ),
+      ],
     );
   }
 }

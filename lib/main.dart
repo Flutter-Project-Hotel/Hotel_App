@@ -4,8 +4,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  debugShowCheckedModeBanner:
-  false;
+
   await Supabase.initialize(
     url: 'https://lcotzphrhnuetkcblvln.supabase.co',
     anonKey:

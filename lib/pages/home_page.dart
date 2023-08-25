@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: ConvexAppBar(
-        items: const [
+        items: [
           TabItem(
               icon: Icon(
                 Icons.home,
@@ -59,6 +59,7 @@ class _HomePageState extends State<HomePage> {
         onTap: _changeItem,
         backgroundColor: HColors.lightBlue,
       ),
+
       body: pages.elementAt(index),
       // body:
     );
