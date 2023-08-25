@@ -2,23 +2,22 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:hotel_project/Widgets/button_widget.dart';
 import 'package:hotel_project/Widgets/text_widget.dart';
-import 'package:hotel_project/app.dart';
 import 'package:hotel_project/constants/spacings.dart';
 import 'package:hotel_project/utils/extensions.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:hotel_project/Widgets/Image_widget.dart';
-import 'package:hotel_project/pages/auth/sign_up_page.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpPageState extends State<SignUpPage> {
+  TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
   @override
   void dispose() {
     emailController.dispose();
@@ -34,29 +33,9 @@ class _LoginPageState extends State<LoginPage> {
       body: SafeArea(
         child: Column(
           children: [
-
-            Container(
-              // child: Expanded(
-              //   flex: 1,
-              //   child:
-              //       // CachedNetworkImage(
-              //       //   imageUrl: hotel.imageUrl ??
-              //       //       'https://lcotzphrhnuetkcblvln.supabase.co/storage/v1/object/public/images/%20welcome.png',
-              //       //   errorWidget: (context, url, s) {
-              //       //     return Container(color: Colors.red);
-              //       //   },
-              //       //   width: 300,
-              //       //   fit: BoxFit.cover,
-              //       // ),
-              //   //     ImagePage(
-              //   //   imagePage:
-              //   //       'https://lcotzphrhnuetkcblvln.supabase.co/storage/v1/object/public/images/%20welcome.png',
-              //   // ),
-              // ),
-            ),
-
             Expanded(
-              child: Container(
+              child: SingleChildScrollView(
+                child: Container(
                   width: context.width,
                   decoration: const BoxDecoration(
                     color: Colors.white,
@@ -67,22 +46,33 @@ class _LoginPageState extends State<LoginPage> {
                   child: Column(
                     children: [
                       Padding(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 15, horizontal: 10),
                         child: Column(children: [
                           const TextWidget(
-                              text: "Welcome back",
-                              size: 30,
+                              text: "Create New Account",
+                              size: 25,
                               istextBold: true,
                               isColorOpacity: true),
                           hVSpace16,
-
+                          TextField(
+                            controller: nameController,
+                            decoration: const InputDecoration(
+                                labelText: 'Name',
+                                border: OutlineInputBorder()),
+                          ),
+                          hVSpace8,
                           TextField(
                             controller: emailController,
                             decoration: const InputDecoration(
                                 labelText: 'Email',
                                 border: OutlineInputBorder()),
                           ),
+                          // TextFormFieldWidget(
+                          //   textHint: 'Enter Email Address',
+                          //   iconTextFiel: Icons.email_outlined,
+                          //   inputType: TextInputType.emailAddress,
+                          // ),
                           hVSpace8,
                           TextField(
                             controller: passwordController,
@@ -91,52 +81,34 @@ class _LoginPageState extends State<LoginPage> {
                                 border: OutlineInputBorder()),
                             obscureText: true,
                           ),
-                          // const PasswordWidget(
-                          //     textHint: 'Enter Password',
-                          //     inputType: TextInputType.visiblePassword,
-                          //     iconTextFiel: Icons.lock_outline)
                         ]),
                       ),
+                      hVSpace16,
                       Column(
                         children: [
                           ButtonsWidget(
-                            text: "LogIn ",
+                            text: "SignUp ",
                             onPressed: () async {
                               if ((emailController.text.isNotEmpty &&
                                       emailController.text.isValidEmail) &&
                                   passwordController.text.isNotEmpty) {
-                                // Signing up ...
-                                await supabase.auth.signInWithPassword(
+                                // Signing in ...
+                                await supabase.auth.signUp(
                                   email: emailController.text,
                                   password: passwordController.text,
                                 );
                                 if (context.mounted) {
-                                  Navigator.pushAndRemoveUntil(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => const App()),
-                                      (route) {
-                                    return false;
-                                  });
+                                  context.pop;
                                 }
                               }
                             },
                           ),
                         ],
                       ),
-                      hVSpace16,
-                      Column(
-                        children: [
-                          ButtonsWidget(
-                            text: "Sign up",
-                            onPressed: () {
-                              const SignUpPage().push(context);
-                            },
-                          ),
-                        ],
-                      ),
                     ],
-                  )),
+                  ),
+                ),
+              ),
             ),
           ],
         ),
@@ -144,6 +116,3 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
-
-
-

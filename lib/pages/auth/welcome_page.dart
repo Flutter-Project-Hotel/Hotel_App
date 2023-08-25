@@ -1,11 +1,12 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:hotel_project/Widgets/Image_widget.dart';
 import 'package:hotel_project/Widgets/button_widget.dart';
 import 'package:hotel_project/Widgets/text_widget.dart';
 import 'package:hotel_project/app.dart';
 import 'package:hotel_project/constants/spacings.dart';
-import 'package:hotel_project/pages/auth/sign_in_pages.dart';
+
+import 'package:hotel_project/pages/auth/sign_up_page.dart';
+
 import 'package:hotel_project/utils/extensions.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 

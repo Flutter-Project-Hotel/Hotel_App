@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class ImagePage extends StatelessWidget {
-  const ImagePage({
+class ImageWidget extends StatelessWidget {
+  const ImageWidget({
     super.key,
-    this.imagePage = '',
+    this.imageWidget = '',
   });
-  final String imagePage;
+  final String imageWidget;
 
   @override
   Widget build(BuildContext context) {
     return Image.asset(
-      imagePage,
+      imageWidget,
       width: MediaQuery.of(context).size.width,
       fit: BoxFit.contain,
     );

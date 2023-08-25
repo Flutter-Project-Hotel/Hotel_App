@@ -1,15 +1,16 @@
-import 'package:flutter/material.dart';
 
-import 'package:hotel_project/Widgets/home_widget.dart';
-import 'package:hotel_project/Widgets/text_widget.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
+import 'package:flutter/material.dart';
+import 'package:hotel_project/Widgets/home_widget.dart';
 import 'package:hotel_project/constants/colors.dart';
 import 'package:hotel_project/pages/notification_page.dart';
 import 'package:hotel_project/pages/orders_page.dart';
 import 'package:hotel_project/pages/profile_page.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({
+    super.key,
+  });
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -27,7 +28,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: ConvexAppBar(
-        items: [
+
+        items: const [
           TabItem(
               icon: Icon(
                 Icons.home,
@@ -61,7 +63,6 @@ class _HomePageState extends State<HomePage> {
       ),
 
       body: pages.elementAt(index),
-      // body:
     );
   }
 

@@ -5,7 +5,7 @@ class ButtonsWidget extends StatelessWidget {
   const ButtonsWidget({
     super.key,
     this.text = '',
-    this.bgColor = HColors.blue,
+    this.bgColor = HColors.lightBlue,
     this.onPressed,
   });
   final String text;
@@ -19,7 +19,7 @@ class ButtonsWidget extends StatelessWidget {
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(bgColor),
         padding: MaterialStateProperty.all(
-            const EdgeInsets.symmetric(horizontal: 115, vertical: 20)),
+            const EdgeInsets.symmetric(horizontal: 250, vertical: 20)),
       ),
       child: Text(
         text,

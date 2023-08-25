@@ -5,6 +5,5 @@ class HColors {
   static const white = Colors.white;
   static const black = Colors.black;
   static const lightBlue = Color(0xFFA4d1f9);
-
   static const grey = Colors.grey;
 }

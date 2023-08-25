@@ -14,7 +14,7 @@ class TAppBar extends StatelessWidget {
     return Material(
       elevation: 10,
       child: Container(
-        height: context.height / 3,
+        // height: context.height / 4,
         width: context.width,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -43,7 +43,7 @@ class TAppBar extends StatelessWidget {
               alignment: Alignment.centerRight,
               child: Image.network(
                 'https://lcotzphrhnuetkcblvln.supabase.co/storage/v1/object/public/images/%20logo.png',
-                height: 120,
+                height: 150,
                 width: 150,
               ),
             ),
