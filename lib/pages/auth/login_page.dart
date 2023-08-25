@@ -1,5 +1,4 @@
 import 'dart:developer';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:hotel_project/Widgets/button_widget.dart';
 import 'package:hotel_project/Widgets/text_widget.dart';
@@ -7,7 +6,6 @@ import 'package:hotel_project/app.dart';
 import 'package:hotel_project/constants/spacings.dart';
 import 'package:hotel_project/models/booking.dart';
 import 'package:hotel_project/pages/auth/sign_up_page.dart';
-import 'package:hotel_project/services/supabase.dart';
 import 'package:hotel_project/utils/extensions.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -67,7 +65,6 @@ class _LoginPageState extends State<LoginPage> {
                               const SizedBox(
                                 height: 20,
                               ),
-
                               Padding(
                                 padding:
                                     const EdgeInsets.fromLTRB(15, 0, 0, 20),
@@ -100,10 +97,6 @@ class _LoginPageState extends State<LoginPage> {
                                   ],
                                 ),
                               ),
-                              // const PasswordWidget(
-                              //     textHint: 'Enter Password',
-                              //     inputType: TextInputType.visiblePassword,
-                              //     iconTextFiel: Icons.lock_outline)
                             ]),
                             Column(
                               children: [
@@ -158,7 +151,7 @@ class _LoginPageState extends State<LoginPage> {
                             //   builder: (context, snapshot) {
                             //     if (snapshot.hasData) {
                             //       return CachedNetworkImage(
-                            //         imageUrl: imageWelcom.imageWelcome ??
+                            //         imageUrl: imageWelcome.imageWelcome ??
                             //             'https://demofree.sirv.com/nope-not-here.jpg',
                             //         errorWidget: (context, url, s) {
                             //           return Container(color: Colors.red);

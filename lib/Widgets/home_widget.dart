@@ -37,13 +37,15 @@ class _HomeWidgetState extends State<HomeWidget> {
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
-                      mainAxisExtent: 200,
+                      mainAxisExtent: 230,
                       mainAxisSpacing: 8,
                       crossAxisSpacing: 8,
                     ),
                     children: [
                       for (final hotel in list) ...[
-                        HotelCard(hotel: hotel),
+                        HotelCard(
+                          hotel: hotel,
+                        ),
                       ]
                     ],
                   );
