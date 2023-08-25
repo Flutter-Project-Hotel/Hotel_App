@@ -33,7 +33,7 @@ class Hotel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['hotel_id'] = this.hotelId;
     data['hotel_name'] = this.hotelName;
     data['hotel_image'] = this.imageUrl;

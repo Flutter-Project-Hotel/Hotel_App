@@ -1,12 +1,25 @@
+import 'package:hotel_project/models/booking.dart';
 import 'package:hotel_project/models/hotel.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SupabaseService {
   static final client = Supabase.instance.client;
 
+// for booking table
+  Future<List<Booking>?> getBooking() async {
+    final supabase = Supabase.instance.client;
+    final rawBooking = await supabase
+        .from('booking')
+        .select('bookingId, logo, imageWelcome,userId, hotelId');
+    final List<Booking> bookingList = [];
+    for (final booking in rawBooking) {
+      bookingList.add(Booking.fromJson(booking));
+    }
+    return bookingList;
+  }
+
 // for Hotel table
-// for Course table
-  Future<List<Hotel>?> getCourses() async {
+  Future<List<Hotel>?> getHotel() async {
     final supabase = Supabase.instance.client;
     final rawHotels = await supabase.from('hotel').select(
         'hotelId, hotelName, imageUrl,hotelPrice, description, capacityRoom, facititiesType,city , imageCity');
@@ -18,12 +31,12 @@ class SupabaseService {
   }
 
 ///////////////////insert function to Course table (update function like this)
-  Future insertCourse(Hotel hotel) async {
-    final supabase = Supabase.instance.client;
-    await supabase.from('hotel').insert(hotel.toJson());
-  }
+  // Future insertCourse(Hotel hotel) async {
+  //   final supabase = Supabase.instance.client;
+  //   await supabase.from('hotel').insert(hotel.toJson());
+  // }
 
-//   ///////////////////delete function to Course table
+//   ///////////////////delete function to hotel table
 
   Future deleteHotel(String hotelId) async {
     final supabase = Supabase.instance.client;
@@ -42,7 +55,7 @@ class SupabaseService {
   //   return courses;
   // }
 
-  Future<List<Hotel>?> getStudentsByHotelId(String hotelId) async {
+  Future<List<Hotel>?> getHotelsByHotelId(String hotelId) async {
     final supabase = Supabase.instance.client;
     final rawHotels = await supabase.from('hotel').select(
         'hotelId, hotelName, imageUrl,hotelPrice, description, capacityRoom, facititiesType,city , imageCity');

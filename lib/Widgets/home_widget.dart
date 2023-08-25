@@ -26,7 +26,7 @@ class _HomeWidgetState extends State<HomeWidget> {
             const TAppBar(title: 'home Page'),
             hVSpace24,
             FutureBuilder(
-              future: SupabaseService().getCourses(),
+              future: SupabaseService().getHotel(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   final list = snapshot.data ?? [];
