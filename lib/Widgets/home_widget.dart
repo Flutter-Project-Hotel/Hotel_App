@@ -55,9 +55,10 @@ class _HomeWidgetState extends State<HomeWidget> {
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
-                      mainAxisExtent: 200,
-                      mainAxisSpacing: 8,
-                      crossAxisSpacing: 8,
+                      mainAxisExtent: 230,
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 10,
+
                     ),
                     children: [
                       for (final hotel in list) ...[

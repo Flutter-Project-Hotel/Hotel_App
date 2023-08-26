@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_project/app.dart';
+import 'package:hotel_project/models/hotel.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+
+List<Hotel> listOrder = [];
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

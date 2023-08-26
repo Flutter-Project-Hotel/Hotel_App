@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hotel_project/Widgets/popular_cities_widget.dart';
 import 'package:hotel_project/constants/spacings.dart';
 import 'package:hotel_project/models/hotel.dart';
-import 'package:hotel_project/pages/hotel_screen.dart';
+import 'package:hotel_project/pages/hotel_details.dart';
 import 'package:hotel_project/utils/extensions.dart';
 
 class HotelCard extends StatelessWidget {
@@ -18,9 +18,10 @@ class HotelCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        HotelScreen(hotel: hotel).push(context);
+        HotelDetails(hotel: hotel).push(context);
       },
       child: Material(
+
           borderRadius: BorderRadius.circular(15),
           elevation: 5,
           color: Colors.white,
@@ -28,6 +29,7 @@ class HotelCard extends StatelessWidget {
             clipBehavior: Clip.hardEdge,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
+
             ),
             child: Padding(
               padding: const EdgeInsets.only(left: 10),

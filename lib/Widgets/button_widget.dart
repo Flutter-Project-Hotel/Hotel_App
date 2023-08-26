@@ -19,7 +19,9 @@ class ButtonsWidget extends StatelessWidget {
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(bgColor),
         padding: MaterialStateProperty.all(
+
             const EdgeInsets.symmetric(horizontal: 70, vertical: 15)),
+
       ),
       child: Text(
         text,
