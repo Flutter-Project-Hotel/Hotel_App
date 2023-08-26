@@ -9,6 +9,8 @@ class TAppBar extends StatelessWidget {
   });
 
   final String title;
+
+  get textController => null;
   @override
   Widget build(BuildContext context) {
     return Material(

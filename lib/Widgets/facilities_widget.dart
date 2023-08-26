@@ -26,13 +26,13 @@ class Facilities extends StatelessWidget {
           ),
           Column(
             children: [
-              Icon(Icons.sports_gymnastics),
+              Icon(Icons.sports_tennis),
               Text("Gym center"),
             ],
           ),
           Column(
             children: [
-              Icon(Icons.work_history_rounded),
+              Icon(Icons.work_history_outlined),
               Text("Work station"),
             ],
           ),

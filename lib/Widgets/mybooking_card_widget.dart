@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:hotel_project/constants/spacings.dart';
 import 'package:hotel_project/models/hotel.dart';
 
-class OrderCardWidgit extends StatelessWidget {
-  const OrderCardWidgit({super.key, required this.hotel});
+class MyBookingCardWidgit extends StatelessWidget {
+  const MyBookingCardWidgit({super.key, required this.hotel});
   final Hotel hotel;
 
   @override

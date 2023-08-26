@@ -23,7 +23,9 @@ class _HomePageState extends State<HomePage> {
       hotel: null,
     ),
     const NotificationPage(),
-    const ProfilePage(),
+    const ProfilePage(
+      hotel: null,
+    ),
   ];
   @override
   Widget build(BuildContext context) {
@@ -41,7 +43,7 @@ class _HomePageState extends State<HomePage> {
               Icons.list_alt,
               color: HColors.blue,
             ),
-            title: 'Orders',
+            title: 'My Booking',
           ),
           TabItem(
               icon: Icon(

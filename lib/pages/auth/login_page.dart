@@ -33,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
     log('Token: ${supabase.auth.currentSession?.accessToken}');
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.grey,
+      backgroundColor: const Color.fromARGB(255, 236, 231, 231),
       body: ListView(
           padding: const EdgeInsets.fromLTRB(0, 400, 0, 0),
           shrinkWrap: true,
@@ -137,32 +137,6 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                               ],
                             ),
-                            // Transform.translate(
-                            //   offset: Offset(0, -650),
-                            //   child: Image.network(
-                            //     'https://lcotzphrhnuetkcblvln.supabase.co/storage/v1/object/public/images/%20welcome.png',
-                            //     fit: BoxFit.cover,
-                            //     scale: 1.5,
-                            //     // width: double.infinity,
-                            //   ),
-                            // ),
-                            // FutureBuilder(
-                            //   future: SupabaseService().getBooking(),
-                            //   builder: (context, snapshot) {
-                            //     if (snapshot.hasData) {
-                            //       return CachedNetworkImage(
-                            //         imageUrl: imageWelcome.imageWelcome ??
-                            //             'https://demofree.sirv.com/nope-not-here.jpg',
-                            //         errorWidget: (context, url, s) {
-                            //           return Container(color: Colors.red);
-                            //         },
-                            //         width: 300,
-                            //         fit: BoxFit.cover,
-                            //       );
-                            //     }
-                            //     return const SizedBox.shrink();
-                            //   },
-                            // ),
                           ],
                         ),
                       )),
