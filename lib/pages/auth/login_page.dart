@@ -45,6 +45,30 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Stack(children: [
+                  FutureBuilder(
+                    future: SupabaseService().getBooking(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        final list = snapshot.data ?? [];
+                        return Column(
+                          children: [
+                            for (final hotel in list) ...[
+                              CachedNetworkImage(
+                                imageUrl: hotel.imageWelcome ??
+                                    'https://demofree.sirv.com/nope-not-here.jpg',
+                                errorWidget: (context, url, s) {
+                                  return Container(color: Colors.red);
+                                },
+                                width: 300,
+                                fit: BoxFit.cover,
+                              ),
+                            ]
+                          ],
+                        );
+                      }
+                      return const SizedBox.shrink();
+                    },
+                  ),
                   Container(
                       height: 535,
                       width: double.infinity,
@@ -67,7 +91,6 @@ class _LoginPageState extends State<LoginPage> {
                               const SizedBox(
                                 height: 20,
                               ),
-
                               Padding(
                                 padding:
                                     const EdgeInsets.fromLTRB(15, 0, 0, 20),
@@ -100,10 +123,6 @@ class _LoginPageState extends State<LoginPage> {
                                   ],
                                 ),
                               ),
-                              // const PasswordWidget(
-                              //     textHint: 'Enter Password',
-                              //     inputType: TextInputType.visiblePassword,
-                              //     iconTextFiel: Icons.lock_outline)
                             ]),
                             Column(
                               children: [
@@ -146,30 +165,6 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             // Transform.translate(
                             //   offset: Offset(0, -650),
-                            //   child: Image.network(
-                            //     'https://lcotzphrhnuetkcblvln.supabase.co/storage/v1/object/public/images/%20welcome.png',
-                            //     fit: BoxFit.cover,
-                            //     scale: 1.5,
-                            //     // width: double.infinity,
-                            //   ),
-                            // ),
-                            // FutureBuilder(
-                            //   future: SupabaseService().getBooking(),
-                            //   builder: (context, snapshot) {
-                            //     if (snapshot.hasData) {
-                            //       return CachedNetworkImage(
-                            //         imageUrl: imageWelcom.imageWelcome ??
-                            //             'https://demofree.sirv.com/nope-not-here.jpg',
-                            //         errorWidget: (context, url, s) {
-                            //           return Container(color: Colors.red);
-                            //         },
-                            //         width: 300,
-                            //         fit: BoxFit.cover,
-                            //       );
-                            //     }
-                            //     return const SizedBox.shrink();
-                            //   },
-                            // ),
                           ],
                         ),
                       )),

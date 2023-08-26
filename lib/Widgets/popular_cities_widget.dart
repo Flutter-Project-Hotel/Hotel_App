@@ -20,7 +20,6 @@ class PopularCitiesWidget extends StatelessWidget {
       child: ListView.builder(
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
-
           // itemCount: hotel.length,
           itemBuilder: (BuildContext context, int index) {
             return Column(

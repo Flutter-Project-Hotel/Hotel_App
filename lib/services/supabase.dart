@@ -11,9 +11,7 @@ class SupabaseService {
 // for booking table
   Future<List<Booking>?> getBooking() async {
     final supabase = Supabase.instance.client;
-    final rawBooking = await supabase
-        .from('booking')
-        .select('bookingId, logo, imageWelcome,userId, hotelId');
+    final rawBooking = await supabase.from('booking').select();
     final List<Booking> bookingList = [];
     for (final booking in rawBooking) {
       bookingList.add(Booking.fromJson(booking));

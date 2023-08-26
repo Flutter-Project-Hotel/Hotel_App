@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_project/Widgets/app_bar.dart';
+import 'package:hotel_project/Widgets/hotel_widget.dart';
 import 'package:hotel_project/Widgets/popular_cities_widget.dart';
 
 import 'package:hotel_project/component/card_hotel.dart';
@@ -29,11 +30,24 @@ class _HomeWidgetState extends State<HomeWidget> {
           children: [
             const TAppBar(title: 'home Page'),
             hVSpace16,
+            // PopularCitiesWidget(
+            //   hotel: hotel,
+            // ),
             FutureBuilder(
               future: SupabaseService().getHotel(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   final list = snapshot.data ?? [];
+                  for (final cities in list)
+                    [
+                      PopularCitiesWidget(
+                        hotel: cities,
+                      ),
+                      // HotelWidget(
+                      //   hotel: hotel,
+                      // ),
+                      // HotelCard(hotel: hotel),
+                    ];
                   return GridView(
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
@@ -47,6 +61,12 @@ class _HomeWidgetState extends State<HomeWidget> {
                     ),
                     children: [
                       for (final hotel in list) ...[
+                        // PopularCitiesWidget(
+                        //   hotel: hotel,
+                        // ),
+                        // HotelWidget(
+                        //   hotel: hotel,
+                        // ),
                         HotelCard(hotel: hotel),
                       ]
                     ],
