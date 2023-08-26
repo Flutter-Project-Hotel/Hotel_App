@@ -21,12 +21,12 @@ class Booking {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['booking_id'] = this.bookingId;
-    data['logo'] = this.logo;
-    data['image_welcome'] = this.imageWelcome;
-    data['user_id'] = this.userId;
-    data['hotel_id'] = this.hotelId;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['booking_id'] = bookingId;
+    data['logo'] = logo;
+    data['image_welcome'] = imageWelcome;
+    data['user_id'] = userId;
+    data['hotel_id'] = hotelId;
     return data;
   }
 }

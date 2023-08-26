@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:hotel_project/services/supabase.dart';
+import 'package:hotel_project/pages/auth/Login_page.dart';
 import 'package:hotel_project/pages/home_page.dart';
-import 'package:hotel_project/pages/auth/welcome_page.dart';
+import 'package:hotel_project/services/supabase.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -37,6 +37,7 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Center(
           child: canGoHome ? const HomePage() : const LoginPage(),

@@ -1,57 +1,52 @@
+import 'package:hotel_project/models/booking.dart';
 import 'package:hotel_project/models/hotel.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SupabaseService {
   static final client = Supabase.instance.client;
+// for booking table
+  Future<List<Booking>?> getBooking() async {
+    final supabase = Supabase.instance.client;
+    final rawBooking = await supabase.from('booking').select();
+    final List<Booking> bookingList = [];
+    for (final booking in rawBooking) {
+      bookingList.add(Booking.fromJson(booking));
+    }
+    return bookingList;
+  }
 
-// // for Course table
-//   Future<List<Course>?> getCourses() async {
-//     final supabase = Supabase.instance.client;
-//     final rawCourses =
-//         await supabase.from('course').select('name, course_id, image_url');
-//     final List<Course> courses = [];
-//     for (final course in rawCourses) {
-//       courses.add(Course.fromJson(course));
-//     }
-//     return courses;
-//   }
+// for Hotel table
+  Future<List<Hotel>?> getHotel() async {
+    final supabase = Supabase.instance.client;
+    final rawHotels = await supabase.from('hotel').select();
+    final List<Hotel> hotels = [];
+    for (final hotel in rawHotels) {
+      hotels.add(Hotel.fromJson(hotel));
+    }
+    return hotels;
+  }
 
-// ///////////////////insert function to Course table (update function like this)
-//   Future insertCourse(Course course) async {
-//     final supabase = Supabase.instance.client;
-//     await supabase.from('course').insert(course.toJson());
-//   }
+///////////////////insert User
+  // Future insertUser(User user) async {
+  //   final supabase = Supabase.instance.client;
+  //   await supabase.from('user').insert(user.toJson());
+  // }
 
-// //   ///////////////////delete function to Course table
+///////////////////delete function from hotel table
 
-//   Future deleteCourse(String courseId) async {
-//     final supabase = Supabase.instance.client;
-//     await supabase.from('course').delete().eq('course_id', courseId);
-//   }
+  Future deleteHotel(String hotelId) async {
+    final supabase = Supabase.instance.client;
+    await supabase.from('hotel').delete().eq('hotelId', hotelId);
+  }
 
-// // for instructor table ??
-//   Future<List<Course>?> getInstructors() async {
-//     final supabase = Supabase.instance.client;
-//     final rawCourses =
-//         await supabase.from('instructor').select('name, course_id, image_url');
-//     final List<Course> courses = [];
-//     for (final course in rawCourses) {
-//       courses.add(Course.fromJson(course));
-//     }
-//     return courses;
-//   }
-
-// // for Student table
-//   Future<List<Student>?> getStudentsByCourseId(String courseId) async {
-//     final supabase = Supabase.instance.client;
-//     final rawStudents =
-//         await supabase.from('student').select('name, student_id').match(
-//       {'course_id': courseId},
-//     );
-//     final List<Student> students = [];
-//     for (final student in rawStudents) {
-//       students.add(Student.fromJson(student));
-//     }
-//     return students;
-//   }
+///////////////////get Hotel by hotel ID
+  Future<List<Hotel>?> getHotelsByHotelId(String hotelId) async {
+    final supabase = Supabase.instance.client;
+    final rawHotels = await supabase.from('hotel').select();
+    final List<Hotel> hotels = [];
+    for (final hotel in rawHotels) {
+      hotels.add(Hotel.fromJson(hotel));
+    }
+    return hotels;
+  }
 }

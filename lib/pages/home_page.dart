@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
 import 'package:hotel_project/Widgets/home_widget.dart';
-import 'package:hotel_project/Widgets/text_widget.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:hotel_project/constants/colors.dart';
 import 'package:hotel_project/pages/notification_page.dart';
@@ -9,7 +7,9 @@ import 'package:hotel_project/pages/orders_page.dart';
 import 'package:hotel_project/pages/profile_page.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({
+    super.key,
+  });
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -19,9 +19,13 @@ class _HomePageState extends State<HomePage> {
   int index = 0;
   List pages = [
     const HomeWidget(),
-    const OrdersPage(),
+    const OrdersPage(
+      hotel: null,
+    ),
     const NotificationPage(),
-    const ProfilePage(),
+    const ProfilePage(
+      hotel: null,
+    ),
   ];
   @override
   Widget build(BuildContext context) {
@@ -39,7 +43,7 @@ class _HomePageState extends State<HomePage> {
               Icons.list_alt,
               color: HColors.blue,
             ),
-            title: 'Orders',
+            title: 'My Booking',
           ),
           TabItem(
               icon: Icon(
@@ -60,7 +64,6 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: HColors.lightBlue,
       ),
       body: pages.elementAt(index),
-      // body:
     );
   }
 

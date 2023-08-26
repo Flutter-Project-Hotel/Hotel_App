@@ -2,12 +2,13 @@ class Hotel {
   String? hotelId;
   String? hotelName;
   String? imageUrl;
-  String? hotelPrice;
+  int? hotelPrice;
   String? description;
-  String? capacityRoom;
   String? facititiesType;
+  int? capacityRoom;
   String? city;
   String? imageCity;
+  String? hotelReview;
 
   Hotel(
       {this.hotelId,
@@ -15,10 +16,11 @@ class Hotel {
       this.imageUrl,
       this.hotelPrice,
       this.description,
-      this.capacityRoom,
       this.facititiesType,
+      this.capacityRoom,
       this.city,
-      this.imageCity});
+      this.imageCity,
+      this.hotelReview});
 
   Hotel.fromJson(Map<String, dynamic> json) {
     hotelId = json['hotel_id'];
@@ -26,23 +28,25 @@ class Hotel {
     imageUrl = json['hotel_image'];
     hotelPrice = json['hotel_price'];
     description = json['description'];
-    capacityRoom = json['capacity_room'];
     facititiesType = json['facitities_type'];
+    capacityRoom = json['capacity_room'];
     city = json['city'];
     imageCity = json['image_city'];
+    hotelReview = json['hotel_review'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['hotel_id'] = this.hotelId;
-    data['hotel_name'] = this.hotelName;
-    data['hotel_image'] = this.imageUrl;
-    data['hotel_price'] = this.hotelPrice;
-    data['description'] = this.description;
-    data['capacity_room'] = this.capacityRoom;
-    data['facitities_type'] = this.facititiesType;
-    data['city'] = this.city;
-    data['image_city'] = this.imageCity;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['hotel_id'] = hotelId;
+    data['hotel_name'] = hotelName;
+    data['hotel_image'] = imageUrl;
+    data['hotel_price'] = hotelPrice;
+    data['description'] = description;
+    data['facitities_type'] = facititiesType;
+    data['capacity_room'] = capacityRoom;
+    data['city'] = city;
+    data['image_city'] = imageCity;
+    data['hotel_review'] = hotelReview;
     return data;
   }
 }

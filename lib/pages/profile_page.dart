@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:hotel_project/constants/colors.dart';
+
+import 'package:hotel_project/models/hotel.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({
     super.key,
+    required this.hotel,
   });
+  final Hotel? hotel;
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
@@ -12,17 +17,12 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.only(top: 120, right: 15, left: 15),
-          child: Column(children: [
-            Text(
-              "Profile Page",
-            )
-          ]),
+    return Scaffold(
+        appBar: AppBar(
+          backgroundColor: HColors.lightBlue,
+          title: const Align(
+              alignment: Alignment.center, child: Text('Book Room')),
         ),
-      ),
-    );
+        body: const Text(' Empty Page'));
   }
 }

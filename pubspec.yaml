@@ -7,15 +7,13 @@ environment:
   sdk: ">=3.1.0 <4.0.0"
 
 dependencies:
-<<<<<<< HEAD
   convex_bottom_bar: ^3.2.0
-=======
   cached_network_image: ^3.2.3
->>>>>>> noura
   flutter:
     sdk: flutter
   supabase: ^1.11.1
-  supabase_flutter: ^1.10.14
+  supabase_flutter: ^1.0.0-dev.1
+  anim_search_bar: ^2.0.3
 
 dev_dependencies:
   flutter_test:
@@ -25,3 +23,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/image/
